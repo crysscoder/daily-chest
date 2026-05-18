@@ -1,0 +1,13 @@
+cooldown-hours: 24
+rewards:
+  - DIAMOND:1
+  - EMERALD:4
+  - GOLDEN_APPLE:1
+  - EXPERIENCE_BOTTLE:16
+messages:
+  prefix: "&7[&aDaily&7]"
+  only-player: "%prefix% &fКоманда доступна только игроку."
+  no-permission: "%prefix% &fНет прав."
+  reloaded: "%prefix% &fКонфиг перезагружен."
+  claimed: "%prefix% &fНаграда получена. Streak: &a%streak%&f."
+  wait: "%prefix% &fСледующая награда через &a%time%&f."

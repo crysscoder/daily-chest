@@ -1,0 +1,19 @@
+name: DailyChest
+version: ${version}
+main: io.github.crysscoder.dailychest.DailyChestPlugin
+api-version: '1.21'
+author: crysscoder
+description: Daily reward chest with streaks.
+commands:
+  daily:
+    description: Claim daily reward.
+    usage: /daily
+    aliases:
+      - dailychest
+permissions:
+  dailychest.use:
+    description: Use DailyChest.
+    default: true
+  dailychest.reload:
+    description: Reload DailyChest config.
+    default: op
