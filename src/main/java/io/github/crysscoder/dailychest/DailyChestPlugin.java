@@ -81,10 +81,24 @@ public final class DailyChestPlugin extends JavaPlugin implements CommandExecuto
 
     private ItemStack reward() {
         List<String> rewards = getConfig().getStringList("rewards");
+
+        if (rewards.isEmpty()) {
+            return new ItemStack(Material.EMERALD, 1);
+        }
+
         String value = rewards.get(ThreadLocalRandom.current().nextInt(rewards.size()));
         String[] parts = value.split(":");
         Material material = Material.matchMaterial(parts[0].toUpperCase(Locale.ROOT));
-        int amount = parts.length > 1 ? Integer.parseInt(parts[1]) : 1;
+        int amount = 1;
+
+        if (parts.length > 1) {
+            try {
+                amount = Integer.parseInt(parts[1]);
+            } catch (NumberFormatException ignored) {
+                amount = 1;
+            }
+        }
+
         return new ItemStack(material == null ? Material.EMERALD : material, Math.max(1, amount));
     }
 
