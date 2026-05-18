@@ -89,6 +89,9 @@ public final class DailyChestPlugin extends JavaPlugin implements CommandExecuto
         String value = rewards.get(ThreadLocalRandom.current().nextInt(rewards.size()));
         String[] parts = value.split(":");
         Material material = Material.matchMaterial(parts[0].toUpperCase(Locale.ROOT));
+        if (material == null || material.isAir()) {
+            material = Material.EMERALD;
+        }
         int amount = 1;
 
         if (parts.length > 1) {
@@ -99,7 +102,7 @@ public final class DailyChestPlugin extends JavaPlugin implements CommandExecuto
             }
         }
 
-        return new ItemStack(material == null ? Material.EMERALD : material, Math.max(1, amount));
+        return new ItemStack(material, Math.min(material.getMaxStackSize(), Math.max(1, amount)));
     }
 
     private String formatTime(long millis) {
